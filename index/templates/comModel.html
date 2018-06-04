@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>commonfile</title>
+    {% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/commode_css.css">
+    {% endblock %}
+</head>
+<body>
+    <div id='modelpage'>
+        <div id='pagetop'>
+            <div id='context'>
+            
+                <div id='logoimg'>
+                    <p>
+                        <img src="/static/images/logo.png">
+                    </p>
+                </div>
+                <div id='map'>
+                    <div id='login-out'>
+                        <ul>
+                            <li><a href="/login">注 册</a></li>
+                            <li>|</li>
+                            <li><a href="/registe">登 录</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div id='maplink'>
+                        <ul>
+                            <li><a href="/">首 页</a></li>
+                            <li><a href="">业务展示</a></li>
+                            <li><a href="">网点信息</a></li>
+                            <li><a href="">我要买车</a></li>
+                            <li><a href="">汽车美容</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='banner1'>
+            {% block banner %}
+                <img src="/static/images/bannbg.jpg"/>
+            {% endblock %}
+        </div>
+        <div id='continer'>
+        {% block continer %}
+
+        {% endblock %}
+
+        </div>
+        <div id='pagebottom'>尾部内容区</div>
+    </div>
+</body>
+</html>

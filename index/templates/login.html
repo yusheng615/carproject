@@ -1,0 +1,42 @@
+{% extends 'comModel.html' %}
+{% block title %}
+    <title>欢迎登录</title>
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/commode_css.css">
+    <link rel="stylesheet" href="/static/css/member_css.css">
+{% endblock %}
+{% block banner %}
+
+{% endblock %}
+{% block continer %}
+<div id='login-form'>
+    <form action="/login/" method='post'>
+        {% csrf_token %}
+   
+        <div class='form-line'>
+            <p class='word'>用户名：</p>
+            <p class='input-line'><input type="text" name='uname' placeholder='请输入用户名'></p>
+        </div>
+        <div class='form-line'>
+            <p class='word'>密　码：</p>
+            <p class='input-line'><input type="password" name='upwd' placeholder='请输入密码'></p>
+            
+        </div>
+        <span>{{msg}}</span>
+        <div class='form-line'>
+            <p class='word'></p>
+            <p class='input-line'><input type="checkbox" id='issave' name='issave'>记住密码</p>
+        </div>
+        <div class='form-line'>
+            <p class='word'></p>
+            <p class='input-line'>
+                <input type="submit" value='登　录' id='submitbt'>
+                <a href="">注　册</a>
+            </p>
+        </div>
+        
+    </form>    
+</div>
+
+{% endblock %}
