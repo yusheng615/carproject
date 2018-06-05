@@ -1,0 +1,50 @@
+git 版本控制系统使用操作：https://www.liaoxuefeng.com
+1.在新建或者待管理的文件夹里面初始化git仓库
+  git init
+2.提交文件到暂存区
+　　git add 文件名/.
+3.对暂存区文件确认提交
+　 git commit -m '注释'
+4.查看本地仓库状态
+　　git status
+5.查看历史日志
+  git log [--graph][--pretty=oneline] 带参数则集中显示日志信息
+6.查看管理文件的修改详情
+　　git diff
+7.回滚到某一历史记录版本
+　　git reset --hard 'id号'
+8.回滚历史版本后再需回调回回滚操作前的状态
+　　1.git reflog   调取所有命令历史
+　　2.git reset --hard '合适的id'
+9.撤销修改/撤销删除
+　　git checkout --　文件名　　如果文件已经commit过，这回到commit时的状态，如果只add 未commit则回到add时的状态
+10.删除文件
+　　git rm
+11.git连接github远程仓库
+　1.ls -al ~/.ssh 查看是否生成了ssh证书文件
+　2.cat ~/.ssh/id_rsa.pub 拷贝公钥内容
+　3.进入github账号的settings-->SSH and GPG Keys 添加公钥(可以添加多台电脑的公钥)
+先有本地库后推送远程库：
+　4.git remote add origin git@github.com:yusheng615/carproject.git 将本地库与远程库关联
+　5.git push -u origin master   将内容推送到远程仓库
+　6.git remote rm origin   出现远程origin已存在无法推送时，使用该命令删除origin后重新执行4.5
+先有初始化远程库后同步到本地库：
+　github 中新增库名并勾选’初始化带README文件选项‘
+　7.git clone git@github.com:yusheng615/carproject.git    克隆初始化的远程库到本地
+　8.git remote -v    查看远程库信息
+分支管理
+12.git checkout -b '分支名'   创建新分支并切换到新分支　等同于 git branch '分支',　git checkout '分支'
+13.git branch   查看所有分支
+14.git branch -d '分支名'  删除指定分支
+在一个分支上面完成工作可以切换到另一分区（主分区）进行分支内容合并
+15.git merge '分支名'
+当分支修改冲突无法提交提示出现，在主分支将冲突修改为期望结果提交即可
+16.git stash   挂起未完成的任务现场
+17.git stash pop   恢复被挂起的任务
+多人协作
+　首先，可以试图用git push origin <branch-name>推送自己的修改；
+　如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+　如果合并有冲突，则解决冲突，并在本地提交；
+　没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+　如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，
+　用命令git branch --　　set-upstream-to <branch-name> origin/<branch-name>
